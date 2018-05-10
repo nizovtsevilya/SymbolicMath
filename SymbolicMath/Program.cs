@@ -8,7 +8,7 @@ namespace SymbolicMath
         public static void Main(string[] args)
         {
             var evaluator = new Evaluator();
-            var evaluation = evaluator.Evaluate("sin(0) + 2");
+            var evaluation = evaluator.Evaluate("tg(30+30)");
             Console.WriteLine(evaluation.Value);
             Console.Read();
         }

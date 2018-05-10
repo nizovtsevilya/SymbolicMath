@@ -30,6 +30,12 @@ namespace SymbolicMath.Evaluations
                 {
                     case FunctionOperation.sin:
                        return Math.Sin(argumentValue);
+                    case FunctionOperation.cos:
+                        return Math.Cos(argumentValue);
+                    case FunctionOperation.tg:
+                        return Math.Tan(argumentValue);
+                    case FunctionOperation.ctg:
+                        return 1f / Math.Tan(argumentValue);
                 }
 
                 throw new InvalidOperationException("Invalid function operation.");

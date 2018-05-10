@@ -57,10 +57,19 @@ namespace SymbolicMath.Evaluations
                     var argumentNode = node.ChildNodes[1];
                     Evaluation argument = PerformEvaluate(argumentNode);
                     FunctionOperation function = FunctionOperation.sin;
-                    switch (functionNode.Term.Name)
+                    switch (functionNode.Token.Text)
                     {
                         case "sin":
                             function = FunctionOperation.sin;
+                            break;
+                        case "cos":
+                            function = FunctionOperation.cos;
+                            break;
+                        case "tg":
+                            function = FunctionOperation.tg;
+                            break;
+                        case "ctg":
+                            function = FunctionOperation.ctg;
                             break;
                     }
                     return new FunctionEvaluation(function, argument);

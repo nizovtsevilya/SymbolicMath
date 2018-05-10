@@ -1,29 +1,12 @@
-﻿#region License
-/* **********************************************************************************
- * Copyright (c) Roman Ivantsov
- * This source code is subject to terms and conditions of the MIT License
- * for Irony. A copy of the license can be found in the License.txt file
- * at the root of this distribution. 
- * By using this source code in any fashion, you are agreeing to be bound by the terms of the 
- * MIT License.
- * You must not remove this notice from this software.
- * **********************************************************************************/
-#endregion
-
-// Irony binary is taken from http://irony.codeplex.com
-// This grammar is based on the ExpressionEvaluatorGrammar from Irony.Samples
-
-using Irony.Parsing;
+﻿using Irony.Parsing;
 
 namespace SymbolicMath
 {
-    [Language("Expression", "1.0", "Dynamic geometry expression evaluator")]
-    public class ExpressionGrammar : Irony.Parsing.Grammar
+    [Language("Expression")]
+    public class ExpressionGrammar : Grammar
     {
         public ExpressionGrammar()
         {
-            this.GrammarComments = @"Arithmetical expressions for dynamic geometry.";
-
             // 1. Terminals
             var number = new NumberLiteral("number");
             var identifier = new IdentifierTerminal("identifier");
@@ -64,7 +47,5 @@ namespace SymbolicMath
             MarkPunctuation("(", ")", ".", ",");
             MarkTransient(Term, Expr, BinOp, UnOp, ParExpr, ArgumentList, CommaSeparatedIdentifierList);
         }
-
-        public static ExpressionGrammar Instance = new ExpressionGrammar();
     }
 }
