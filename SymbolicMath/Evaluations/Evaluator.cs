@@ -26,7 +26,7 @@ namespace SymbolicMath.Evaluations
         {
             switch (node.Term.Name)
             {
-                case "BinaryExpression":
+                case "BinExpr":
                     var leftNode = node.ChildNodes[0];
                     var operationNode = node.ChildNodes[1];
                     var rightNode = node.ChildNodes[2];
@@ -52,7 +52,19 @@ namespace SymbolicMath.Evaluations
                             break;
                     }
                     return new BinaryEvaluation(left, right, operation);
-                case "Number":
+                case "FunctionCall":
+                    var functionNode = node.ChildNodes[0];
+                    var argumentNode = node.ChildNodes[1];
+                    Evaluation argument = PerformEvaluate(argumentNode);
+                    FunctionOperation function = FunctionOperation.sin;
+                    switch (functionNode.Term.Name)
+                    {
+                        case "sin":
+                            function = FunctionOperation.sin;
+                            break;
+                    }
+                    return new FunctionEvaluation(function, argument);
+                case "number":
                     CultureInfo culture = new CultureInfo("en-US");
 
                     var value = Convert.ToSingle(node.Token.Text, culture);

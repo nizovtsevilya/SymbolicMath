@@ -57,6 +57,8 @@
     <Compile Include="Evaluations\ConstantEvaluation.cs" />
     <Compile Include="Evaluations\Evaluation.cs" />
     <Compile Include="Evaluations\Evaluator.cs" />
+    <Compile Include="Evaluations\FunctionEvaluation.cs" />
+    <Compile Include="Evaluations\FunctionOperation.cs" />
     <Compile Include="ExpressionGrammar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
