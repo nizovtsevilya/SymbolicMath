@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SymbolicMath.Evaluations
 {
@@ -21,24 +17,8 @@ namespace SymbolicMath.Evaluations
         {
             get
             {
-                if (!float.TryParse(argument.Value.ToString(), out float argumentValue))
-                {
-                    throw new InvalidOperationException("Error");
-                }
-
-                switch (function)
-                {
-                    case FunctionOperation.sin:
-                       return Math.Sin(argumentValue);
-                    case FunctionOperation.cos:
-                        return Math.Cos(argumentValue);
-                    case FunctionOperation.tg:
-                        return Math.Tan(argumentValue);
-                    case FunctionOperation.ctg:
-                        return 1f / Math.Tan(argumentValue);
-                }
-
-                throw new InvalidOperationException("Invalid function operation.");
+                Console.WriteLine("Работает!");
+                return 0;
             }
         }
 

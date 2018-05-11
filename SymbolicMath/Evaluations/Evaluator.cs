@@ -24,7 +24,7 @@ namespace SymbolicMath.Evaluations
 
         private Evaluation PerformEvaluate(ParseTreeNode node)
         {
-            switch (node.Term.Name)
+             switch (node.Term.Name)
             {
                 case "BinExpr":
                     var leftNode = node.ChildNodes[0];
@@ -75,9 +75,21 @@ namespace SymbolicMath.Evaluations
                     return new FunctionEvaluation(function, argument);
                 case "number":
                     CultureInfo culture = new CultureInfo("en-US");
-
                     var value = Convert.ToSingle(node.Token.Text, culture);
                     return new ConstantEvaluation(value);
+                case "AssignmentStmt":
+                    var expNode = node.ChildNodes[0];
+                    var expreNode = node.ChildNodes[2];
+                    Evaluation expression = PerformEvaluate(expreNode);
+                    return new NameEvaluation(expNode.ToString(), expression);
+                case "Term":
+                    Console.WriteLine("не знаю что с этим делать");
+                    throw new NotSupportedException();
+                case "UnExpr":
+                    var unNode = node.ChildNodes[0];
+                    var unExprNode = node.ChildNodes[1];
+                    Evaluation unExpression = PerformEvaluate(unExprNode);
+                    return new UnaryEvaluation(unNode.ToString(), unExpression);
             }
 
             throw new InvalidOperationException($"Unrecognizable term {node.Term.Name}");
